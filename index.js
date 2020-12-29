@@ -45,15 +45,15 @@ async function loadMainPrompts() {
                     value: "ADD_DEPARTMENT"
                 },
                 {
-                    name: "Add Role"
+                    name: "Add Role",
                     value: "ADD_ROLE"
                 },
                 {
-                    name: "Add Employee"
+                    name: "Add Employee",
                     value: "ADD_EMPLOYEE"
                 },
                 {
-                    name: "Update Employee Role"
+                    name: "Update Employee Role",
                     value: "UPDATE_EMPLOYEE_ROLE"
                 },
                 {
