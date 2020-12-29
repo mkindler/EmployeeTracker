@@ -92,3 +92,20 @@ async function viewDepartments() {
 
     loadMainPrompts();
 }
+
+async function viewRoles() {
+    const roles = await db.viewAllRoles();
+    console.log("\n");
+    console.table(roles);
+
+    loadMainPrompts();
+}
+
+async function viewEmployees() {
+    const employees = await db.viewAllEmployees();
+    console.log("\n");
+    console.table(employees);
+
+    loadMainPrompts();
+}
+
