@@ -109,3 +109,49 @@ async function viewEmployees() {
     loadMainPrompts();
 }
 
+async function addDepartment() {
+    const department = await prompt([
+        {
+            name: "name",
+            message: "What is the name of the department you would like to add?"
+        }
+    ]);
+
+    await db.createDepartment(department);
+
+    console.log(`Successfully added ${department.name} to the database`);
+
+    loadMainPrompts();
+}
+
+async function addRole() {
+    const departments = await db.viewAllDepartments();
+
+    const departmentChoices = departments.map(({ id, name }) => ({
+        name: name,
+        value: id
+    }));
+
+    const role = await prompt([
+        {
+            name: "title",
+            message: "What is the name of the role you would like to add?"
+        },
+        {
+            name: "salary",
+            message: "What is the salary of the new role?"
+        },
+        {
+            type: "list",
+            name: "department_id",
+            message: "To which department does the new role belong?",
+            choices: departmentChoices
+        }
+    ]);
+
+    await db.createRole(role);
+
+    console.log(`Successfully added ${role.title} to the database`);
+
+    loadMainPrompts();
+}
