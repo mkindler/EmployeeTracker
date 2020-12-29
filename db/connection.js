@@ -10,6 +10,7 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
+// This will allow the use of promises and the async and awat syntax
 connection.query = util.promisify(connection.query);
 
 module.exports = connection;
