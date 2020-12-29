@@ -57,8 +57,8 @@ async function loadMainPrompts() {
                     value: "UPDATE_EMPLOYEE_ROLE"
                 },
                 {
-                    name: "Exit",
-                    value: "EXIT"
+                    name: "Quit",
+                    value: "QUIT"
                 }
             ]
         }
@@ -207,7 +207,7 @@ async function addEmployee() {
     loadMainPrompts();
 }
 
-function exit() {
+function quit() {
     console.log("Thanks for using the Employee Manager!");
     process.exit();
 }
