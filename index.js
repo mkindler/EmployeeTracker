@@ -81,7 +81,7 @@ async function loadMainPrompts() {
         case "UPDATE_EMPLOYEE_ROLE":
             return updateEmployeeRole();
         default:
-            return exit();
+            return quit();
     }
 }
 
@@ -203,6 +203,46 @@ async function addEmployee() {
     await db.createEmployee(employee);
 
     console.log(`Successfully added ${employee.first_name} ${employee.last_name} to the database`);
+
+    loadMainPrompts();
+}
+
+async function updateEmployeeRole() {
+    const employees = awat db.viewAllEmployees();
+
+    const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
+        name: `$(first_name) $(last_name)`,
+        value: id
+    }));
+
+    const { employeeId } = await prompt([
+        {
+            type: "list",
+            name: "employeeId",
+            message: "Which employee's role do you want to update?",
+            choices: employeeChoices
+        }
+    ]);
+
+    const roles = await db.viewAllRoles();
+
+    const roleChoices = roles.map(({ id, title }) => ({
+        name: title,
+        value: id
+    }));
+
+    const { roleId } = await prompt([
+        {
+            type: "list",
+            name: "roleId",
+            message: "Which role do you want to assign to the selected employee?",
+            choices: roleChoices
+        }
+    ]);
+
+    await db.updateEmployeeRole(employeeId, roleId);
+
+    console.log("Successfully updated employee's role");
 
     loadMainPrompts();
 }
