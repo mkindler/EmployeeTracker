@@ -2,7 +2,6 @@
 const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
 const db = require ("./db");
-const { allowedNodeEnvironmentFlags, exit } = require("process");
 require("console.table");
 
 init();
@@ -86,7 +85,7 @@ async function loadMainPrompts() {
 }
 
 async function viewDepartments() {
-    const departments = await db.viewAllDepartments();
+    const departments = await db.findAllDepartments();
     console.log("\n");
     console.table(departments);
 
@@ -94,7 +93,7 @@ async function viewDepartments() {
 }
 
 async function viewRoles() {
-    const roles = await db.viewAllRoles();
+    const roles = await db.findAllRoles();
     console.log("\n");
     console.table(roles);
 
@@ -102,7 +101,7 @@ async function viewRoles() {
 }
 
 async function viewEmployees() {
-    const employees = await db.viewAllEmployees();
+    const employees = await db.findAllEmployees();
     console.log("\n");
     console.table(employees);
 
@@ -125,7 +124,7 @@ async function addDepartment() {
 }
 
 async function addRole() {
-    const departments = await db.viewAllDepartments();
+    const departments = await db.findAllDepartments();
 
     const departmentChoices = departments.map(({ id, name }) => ({
         name: name,
@@ -157,8 +156,8 @@ async function addRole() {
 }
 
 async function addEmployee() {
-    const roles = await db.viewAllRoles();
-    const employees = await db.viewAllEmployees();
+    const roles = await db.findAllRoles();
+    const employees = await db.findAllEmployees();
 
     const employee = await prompt([
         {
@@ -208,7 +207,7 @@ async function addEmployee() {
 }
 
 async function updateEmployeeRole() {
-    const employees = await db.viewAllEmployees();
+    const employees = await db.findAllEmployees();
 
     const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
         name: `$(first_name) $(last_name)`,
@@ -224,7 +223,7 @@ async function updateEmployeeRole() {
         }
     ]);
 
-    const roles = await db.viewAllRoles();
+    const roles = await db.findAllRoles();
 
     const roleChoices = roles.map(({ id, title }) => ({
         name: title,

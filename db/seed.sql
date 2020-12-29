@@ -1,18 +1,17 @@
 use employees;
 
--- Pulled the following example data from the homework demo and edited as desired
 INSERT INTO department
-	(name)
+    (name)
 VALUES
-	('Sales'),
+    ('Sales'),
     ('Engineering'),
     ('Finance'),
     ('Legal');
-    
+
 INSERT INTO role
-	(title, salary, department_id)
+    (title, salary, department_id)
 VALUES
-	('Sales Lead', 100000, 1),
+    ('Sales Lead', 100000, 1),
     ('Salesperson', 80000, 1),
     ('Lead Engineer', 150000, 2),
     ('Software Engineer', 120000, 2),
@@ -24,11 +23,11 @@ VALUES
 INSERT INTO employee
     (first_name, last_name, role_id, manager_id)
 VALUES
-    ('John', 'DeCoder', 1, NULL),
-    ('Mike', 'Thomas', 2, 1),
-    ('Rick', 'Gibson', 3, NULL),
-    ('Monica', 'Billy', 4, 3),
-    ('Maypahou', 'Ly', 5, NULL),
-    ('Jared', 'Torgeson', 6, 5),
-    ('Dean', 'Pekarek', 7, NULL),
-    ('Tom', 'Hanks', 8, 7);
+    ('John', 'Doe', 1, NULL),
+    ('Mike', 'Chan', 2, 1),
+    ('Ashley', 'Rodriguez', 3, NULL),
+    ('Kevin', 'Tupik', 4, 3),
+    ('Kunal', 'Singh', 5, NULL),
+    ('Malia', 'Brown', 6, 5),
+    ('Sarah', 'Lourd', 7, NULL),
+    ('Tom', 'Allen', 8, 7);
