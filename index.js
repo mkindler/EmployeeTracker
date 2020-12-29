@@ -1,5 +1,5 @@
 // Required dependencies to install
-const prompt = require("inquirer");
+const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
 const db = require ("./db");
 const { allowedNodeEnvironmentFlags, exit } = require("process");
@@ -208,7 +208,7 @@ async function addEmployee() {
 }
 
 async function updateEmployeeRole() {
-    const employees = awat db.viewAllEmployees();
+    const employees = await db.viewAllEmployees();
 
     const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
         name: `$(first_name) $(last_name)`,
