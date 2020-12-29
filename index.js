@@ -2,6 +2,7 @@
 const prompt = require("inquirer");
 const logo = require("asciiart-logo");
 const db = require ("./db");
+const { allowedNodeEnvironmentFlags, exit } = require("process");
 require("console.table");
 
 init();
@@ -67,6 +68,27 @@ async function loadMainPrompts() {
     switch (choice) {
         case "VIEW_DEPARTMENTS":
             return viewDepartments();
-        case 
+        case "VIEW_ROLES":
+            return viewRoles();
+        case "VIEW_EMPLOYEES":
+            return viewEmployees();
+        case "ADD_DEPARTMENT":
+            return addDepartment();
+        case "ADD_ROLE":
+            return addRole();
+        case "ADD_EMPLOYEE":
+            return addEmployee();
+        case "UPDATE_EMPLOYEE_ROLE":
+            return updateEmployeeRole();
+        default:
+            return exit();
     }
+}
+
+async function viewDepartments() {
+    const departments = await db.viewAllDepartments();
+    console.log("\n");
+    console.table(departments);
+
+    loadMainPrompts();
 }
