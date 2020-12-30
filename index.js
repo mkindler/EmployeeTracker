@@ -84,6 +84,7 @@ async function loadMainPrompts() {
     }
 }
 
+// Functions to be able to view and add departments, roles, and employees, plus update employees as needed
 async function viewDepartments() {
     const departments = await db.findAllDepartments();
   
