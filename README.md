@@ -55,7 +55,7 @@ A video is included in the assets folder found within the repository.
 
 Please open a New Issue via GitHub for pull requests on this project that includes a description of what you would like to change.
 
-## Ackknowledgment
+## Acknowledgment
 
 * Trilogy Education Services
 * [npm](https://www.npmjs.com/)
