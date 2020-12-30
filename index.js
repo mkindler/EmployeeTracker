@@ -155,7 +155,7 @@ async function addRole() {
   
     console.log(`Successfully added ${role.title} to the database`);
   
-    loadMainPrompts();
+    loadMainPrompts(); 
 }
 
 async function addEmployee() {
